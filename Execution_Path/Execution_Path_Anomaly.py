@@ -52,6 +52,8 @@ def encode_key(key_log_series, label_encoder_file, n_steps):
     class_num = len(label_encoder.classes_)
     
     X, y = split_data(label_encode_cate, n_steps)
+    # X is window
+    # y is the next log after window
 
     # one hot encoding the labelled numeric log key array
     one_hot_y = np_utils.to_categorical(y)
