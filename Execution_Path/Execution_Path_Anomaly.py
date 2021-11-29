@@ -28,15 +28,15 @@ def lab_enc(cate_list, label_encoder_file):
     # feature engineering for list
     cate_list_com = miss_rep_col(cate_list)
     
-    if Path(label_encoder_file).is_file():
-        label_encoder = joblib.load(label_encoder_file)
-    else:
-        laber_encoder = LabelEncoder()
-        # key_log_arr = cate_list_com.values
-        label_encoder = laber_encoder.fit(cate_list_com)
-        # save the encoder for labelling
-        joblib.dump(label_encoder, label_encoder_file.as_posix())
-    
+    #if Path(label_encoder_file).is_file():
+    #    label_encoder = joblib.load(label_encoder_file)
+    #else:
+    laber_encoder = LabelEncoder()
+    # key_log_arr = cate_list_com.values
+    label_encoder = laber_encoder.fit(cate_list_com)
+    # save the encoder for labelling
+    joblib.dump(label_encoder, label_encoder_file.as_posix())
+
     label_encode_cate = label_encoder.transform(cate_list_com)
 
     return label_encode_cate
